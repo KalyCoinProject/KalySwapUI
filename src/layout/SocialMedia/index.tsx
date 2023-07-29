@@ -21,7 +21,7 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
       title: 'Twitter'
     },
     {
-      link: 'https://t.me/',
+      link: 'https://t.me/+yj8Ae9lNXmg1Yzkx',
       icon: Telegram,
       title: 'Telegram'
     },
@@ -31,7 +31,7 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
       title: 'Github'
     },
     {
-      link: 'https://discord.gg/',
+      link: 'https://discord.gg/3CHQFKDZPy',
       icon: Discord,
       title: 'Discord'
     }

@@ -54,11 +54,11 @@ export default function Menu() {
             <Book size={14} />
             {t('menu.tutorials')}
           </MenuItem>
-          <MenuItem id="link" href="https://t.me/">
+          <MenuItem id="link" href="https://t.me/+yj8Ae9lNXmg1Yzkx">
             <Send size={14} />
             {t('menu.telegram')}
           </MenuItem>
-          <MenuItem id="link" href="https://discord.com/">
+          <MenuItem id="link" href="https://discord.gg/3CHQFKDZPy">
             <MessageCircle size={14} />
             {t('menu.discord')}
           </MenuItem>

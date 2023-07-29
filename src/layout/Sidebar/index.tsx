@@ -69,6 +69,13 @@ export default function Sidebar({ collapsed, onCollapsed }: SidebarProps) {
       title: t('header.buy'),
       id: 'buy',
       isActive: location?.pathname?.startsWith(BETA_MENU_LINK.buy)
+    }, 
+    {
+      link: BETA_MENU_LINK.bridge,
+      icon: Bridge,
+      title: t('header.bridge'),
+      id: 'bridge',
+      isActive: location?.pathname?.startsWith(BETA_MENU_LINK.bridge)
     },
     {
       link: BETA_MENU_LINK.pool,
@@ -84,7 +91,6 @@ export default function Sidebar({ collapsed, onCollapsed }: SidebarProps) {
       id: 'stake',
       isActive: location?.pathname?.startsWith(BETA_MENU_LINK.stake)
     },
-
     {
       link: BETA_MENU_LINK.vote,
       icon: Vote,
