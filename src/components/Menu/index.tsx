@@ -70,7 +70,7 @@ export default function Menu() {
             <CheckSquare size={14} />
             {t('header.vote')}
           </MenuNavItem>
-          <MenuItem id="link" href="https://twitter.com/kalypay">
+          <MenuItem id="link" href="https://twitter.com/KalyChain">
             <Twitter size={14} />
             {t('menu.twitter')}
           </MenuItem>

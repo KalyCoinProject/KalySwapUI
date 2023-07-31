@@ -16,7 +16,7 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
 
   const socialLinks = [
     {
-      link: 'https://twitter.com/kalypay',
+      link: 'https://twitter.com/KalyChain',
       icon: Twitter,
       title: 'Twitter'
     },
