@@ -26,7 +26,7 @@ import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { MenuFlyout, MenuNavItem } from '../StyledMenu'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
-import { ANALYTICS_PAGE, NETWORK_LABELS, NETWORK_CURRENCY } from 'src/constants'
+import { BRIDGE_PAGE, NETWORK_LABELS, NETWORK_CURRENCY } from 'src/constants'
 import { Hidden } from 'src/theme'
 import { useChainId } from 'src/hooks'
 
@@ -355,7 +355,7 @@ export default function Header() {
           >
             {t('header.stake')}
           </StyledNavLink>
-          <StyledExternalLink id={`info-nav-link`} href={ANALYTICS_PAGE}>
+          <StyledExternalLink id={`info-nav-link`} href={BRIDGE_PAGE}>
             {t('header.charts')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
         </HeaderLinks>

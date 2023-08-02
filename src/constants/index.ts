@@ -9,7 +9,7 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const LANDING_PAGE = 'https://kalyswap.io'
-export const ANALYTICS_PAGE = 'https://info.kalyswap.io'
+export const BRIDGE_PAGE = 'https://bridge.kalychain.io'
 
 export const KALYSWAP_API_BASE_URL = `https://api.kalyswap.io`
 

@@ -12,7 +12,7 @@
     "oldKswap": "Old KSWAP",
     "vote": "Vote",
     "ido": "IDO",
-    "charts": "Charts",
+    "charts": "Bridge",
     "forum": "Forum",
     "kswapBreakDown": "Your KSWAP Breakdown",
     "balance": "Balance: ",
@@ -510,7 +510,7 @@
     "upcomingIDOs": "Upcoming",
     "endedIDOs": "Ended",
     "allIDOs": "All IDOs",
-    "noIDOsFound": "No IDOs found",
+    "noIDOsFound": "There are no IDOs for now, please check back at another time for new updates.",
     "IDOAnnounced": "IDOs publicly announced will appear here."
   },
   "swapHooks": {

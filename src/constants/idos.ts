@@ -15,7 +15,7 @@ interface AnnouncedIDOItem {
 }
 
 export const IDO_LIST: Array<AnnouncedIDOItem> = [
-  {
+  /*{
     id: 1,
     title: 'Sherpa Cash',
     description: '',
@@ -137,5 +137,5 @@ export const IDO_LIST: Array<AnnouncedIDOItem> = [
     projectUrl: 'https://colonylab.io/',
     startTime: '',
     endTime: ''
-  }
+  } */
 ]

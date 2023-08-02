@@ -3,7 +3,7 @@ export const PrivacyPolicy = `
 
 Last updated: April 13, 2023
 
-Vizier Pte Limited, a limited company registered in the British Virgin Islands ("us", "we", or "our") operates and manages the [https://kalyswap.io/](https://kalyswap.io/), [https://info.kalyswap.io](https://app.kalyswap.io/) and [https://app.kalyswap.io](https://app.kalyswap.io/) websites (the "Service"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.
+Vizier Pte Limited, a limited company registered in the British Virgin Islands ("us", "we", or "our") operates and manages the [https://kalyswap.io/](https://kalyswap.io/), [https://bridge.kalychain.io](https://app.kalyswap.io/) and [https://app.kalyswap.io](https://app.kalyswap.io/) websites (the "Service"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.
 
 We will not use or share your information with anyone except as described in this Privacy Policy. We use your Personal Information for providing and improving the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms of Service.
 

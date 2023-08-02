@@ -19,8 +19,8 @@ import {
 import Backward from '../../assets/svg/backward.svg'
 import Forward from '../../assets/svg/forward.svg'
 import { Dashboard, Swap, Stake, Pool, Buy, Vote, Airdrop } from '../../components/Icons'
-import Charts from '../../assets/svg/menu/analytics.svg'
-import { ANALYTICS_PAGE } from '../../constants'
+//import Analytics from '../../assets/svg/menu/analytics.svg'
+import { BRIDGE_PAGE } from '../../constants'
 import Bridge from '../../assets/svg/menu/bridge.svg'
 import Governance from '../../assets/svg/menu/governance.svg'
 import { Scrollbars } from 'react-custom-scrollbars'
@@ -112,8 +112,8 @@ export default function Sidebar({ collapsed, onCollapsed }: SidebarProps) {
 
   const kalyswapLinks = [
     {
-      link: ANALYTICS_PAGE,
-      icon: Charts,
+      link: BRIDGE_PAGE,
+      icon: Bridge,
       title: t('header.charts'),
       id: 'charts'
     },
