@@ -102,7 +102,7 @@ export default function UnstakingModal({
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo.stakedAmount} />}
               </TYPE.body>
-              <TYPE.body>{t('earn.depositedPglLiquidity')}</TYPE.body>
+              <TYPE.body>{t('earn.depositedKslLiquidity')}</TYPE.body>
             </AutoColumn>
           )}
           {stakingInfo?.earnedAmount && (
@@ -134,7 +134,7 @@ export default function UnstakingModal({
             <TYPE.body fontSize={20}>
               {t('earn.withdrawingLiquidity', {
                 amount: stakingInfo?.stakedAmount?.toSignificant(4),
-                symbol: 'PGL'
+                symbol: 'KSL'
               })}
             </TYPE.body>
             <TYPE.body fontSize={20}>
@@ -160,7 +160,7 @@ export default function UnstakingModal({
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('earn.transactionSubmitted')}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{t('earn.withdrewStakingToken', { symbol: 'PGL' })}</TYPE.body>
+            <TYPE.body fontSize={20}>{t('earn.withdrewStakingToken', { symbol: 'KSL' })}</TYPE.body>
             <TYPE.body fontSize={20}>{t('earn.claimedReward', { symbol: 'KSWAP' })}</TYPE.body>
           </AutoColumn>
         </SubmittedView>

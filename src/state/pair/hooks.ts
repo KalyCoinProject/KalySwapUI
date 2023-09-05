@@ -30,7 +30,7 @@ export function usePairHourlyRateData(pairAddress: string, timeWindow: string, i
     // February 8th 2021 - Kalyswap Factory is created
     const startTime =
       type === 'ALL'
-        ? dayjs('2021-02-11')
+        ? dayjs('2021-08-29')
             .startOf('hour')
             .unix()
         : currentTime
@@ -164,7 +164,7 @@ export function useHourlyPairTokensChartData(
     // February 8th 2021 - Kalyswap Factory is created
     const startTime =
       type === 'ALL'
-        ? dayjs('2021-02-11')
+        ? dayjs('2023-08-29')
             .startOf('hour')
             .unix()
         : currentTime

@@ -1,5 +1,5 @@
 import { Interface } from '@ethersproject/abi'
-import { abi as IKalyswapPairABI } from '@kalycoinproject/exchange-contracts/artifacts/contracts/kalyswap-core/interfaces/IKalyswapPair.sol/IKalyswapPair.json'
+import { abi as IKalyswapPairABI } from '../../artifacts/kalyswap-core/IKalyswapPair.json'
 
 const KALYSWAP_PAIR_INTERFACE = new Interface(IKalyswapPairABI)
 

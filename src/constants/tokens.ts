@@ -22,26 +22,26 @@ export const KSWAP: { [chainId in ChainId]: Token } = {
 
 export const ETH: { [chainId in ChainId]: Token } = {
   [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 18, 'ETH', 'Ether'),
-  [ChainId.KALYCHAIN]: new Token(ChainId.KALYCHAIN, '0x89aE5C335372bF4d06ece4cEE1e92D04c3fdf1e0', 18, 'ETH', 'Ether')
+  [ChainId.KALYCHAIN]: new Token(ChainId.KALYCHAIN, '0xad89EA57DB2092b66641E732F51ADf483Ac18C21', 18, 'ETH', 'Ether')
 }
 
 export const USDT: { [chainId in ChainId]: Token } = {
-  [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 6, 'USDT', 'Tether USD'),
+  [ChainId.TESTNET]: new Token(ChainId.TESTNET, '0xF29AD0640731c50d0c7C999D1f8d5Ffb9E2A3da3', 18, 'USDT', 'Tether USD'),
   [ChainId.KALYCHAIN]: new Token(
     ChainId.KALYCHAIN,
-    '0xe6828eF9923943899199dc4464B791499025d5aC',
-    6,
+    '0x37540F0cC489088c01631138Da2E32cF406B83B8',
+    18,
     'USDT',
     'Tether USD'
   )
 }
 
 export const USDt: { [chainId in ChainId]: Token } = {
-  [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 6, 'USDT', 'Tether USD'),
+  [ChainId.TESTNET]: new Token(ChainId.TESTNET, '0xF29AD0640731c50d0c7C999D1f8d5Ffb9E2A3da3', 18, 'USDT', 'Tether USD'),
   [ChainId.KALYCHAIN]: new Token(
     ChainId.KALYCHAIN,
-    '0xe6828eF9923943899199dc4464B791499025d5aC',
-    6,
+    '0x37540F0cC489088c01631138Da2E32cF406B83B8',
+    18,
     'USDT',
     'Tether USD'
   )
@@ -51,8 +51,8 @@ export const BTCB: { [chainId in ChainId]: Token } = {
   [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 8, 'BTCB', 'Wrapped Bitcoin'),
   [ChainId.KALYCHAIN]: new Token(
     ChainId.KALYCHAIN,
-    '0x70d50a152b335A20236E0faf7579b58F186B639f',
-    8,
+    '0xD0731970CCFEc3EB25c16e956F0b6902Fba75B69',
+    18,
     'BTCB',
     'Wrapped Bitcoin'
   )
@@ -62,7 +62,7 @@ export const BNB: { [chainId in ChainId]: Token } = {
   [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 18, 'BNB', 'Binance'),
   [ChainId.KALYCHAIN]: new Token(
     ChainId.KALYCHAIN,
-    '0x74D0BC02C633d207C35c6a1D8fda6E7104EC47Db',
+    '0x2F4fB121ad39B71A4516aaa88a5C7ea926f5350f',
     18,
     'BNB',
     'Binance'
@@ -73,7 +73,7 @@ export const MATIC: { [chainId in ChainId]: Token } = {
   [ChainId.TESTNET]: new Token(ChainId.TESTNET, ZERO_ADDRESS, 18, 'MATIC', 'Matic Token'),
   [ChainId.KALYCHAIN]: new Token(
     ChainId.KALYCHAIN,
-    '0x74685449581BA264B09d01109142b4ad44c687ed',
+    '0x343bE88Bb1Aa79Ba451760ffc2b1f3BB85da521A',
     18,
     'MATIC',
     'Matic Token'

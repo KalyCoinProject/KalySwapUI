@@ -1,6 +1,6 @@
 import { TokenAmount, Pair, Currency } from '@kalycoinproject/sdk'
 import { useMemo } from 'react'
-import IKalyswapPair from '@kalycoinproject/exchange-contracts/artifacts/contracts/kalyswap-core/interfaces/IKalyswapPair.sol/IKalyswapPair.json'
+import IKalyswapPair from '../artifacts/kalyswap-core/IKalyswapPair.json'
 import { Interface } from '@ethersproject/abi'
 import { useChainId } from '../hooks'
 

@@ -243,7 +243,7 @@ export default function BridgeMigratorModal({
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Migrating Liquidity</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} PGL</TYPE.body>
+            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} KSL</TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
@@ -251,7 +251,7 @@ export default function BridgeMigratorModal({
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('earn.transactionSubmitted')}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Migrated {parsedAmount?.toSignificant(4)} PGL</TYPE.body>
+            <TYPE.body fontSize={20}>Migrated {parsedAmount?.toSignificant(4)} KSL</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

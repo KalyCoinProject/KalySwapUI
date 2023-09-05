@@ -2139,15 +2139,22 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kalycoinproject/components@^3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@kalycoinproject/components/-/components-3.0.8.tgz#389dfd5b0f2acb18ba372fb9375f97c82c905f5b"
-  integrity sha512-+0I6cw1ud63usej/3iESHhYTZoq81XV7WQSWneCiR+ZqJlkfqTd2puxC9Keus/9gxcMG1I+3N4KRuQitjmHcVA==
+"@kalycoinproject/components@3.0.26":
+  version "3.0.26"
+  resolved "https://registry.yarnpkg.com/@kalycoinproject/components/-/components-3.0.26.tgz#7f9f0635ae54cf5d7779754a3fa153447c3d2cb9"
+  integrity sha512-bgVLRb3MTFcLVkhK4exty8qofj6OaPvC+5TNUL3LKwBefRBONDOMpkL7t+QzjfTxPekpz5G5KXLRgxOuhJHmKw==
   dependencies:
     "@kalycoinproject/web3-react-injected-connector" "^1.0.3"
     cids "^1.1.9"
     graphql-request "^4.2.0"
     react-switch "^6.0.0"
+
+"@kalycoinproject/exchange-contracts@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@kalycoinproject/exchange-contracts/-/exchange-contracts-2.0.3.tgz#5570315042b09063f3f2f72ff37fc0466963e438"
+  integrity sha512-5obqKD1YtDx9fdwnaElF+1Pw8E0bp23uDSHumX7DKw6drE+mkwtnEUsTZD6ceNypjzSouZzvkEjPAnQvqMENwQ==
+  dependencies:
+    hardhat-tracer "^1.0.0-alpha.5"
 
 "@kalycoinproject/exchange-contracts@^1.0.2":
   version "1.0.2"
@@ -2156,7 +2163,7 @@
   dependencies:
     hardhat-tracer "^1.0.0-alpha.5"
 
-"@kalycoinproject/governance@^1.2.0":
+"@kalycoinproject/governance@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@kalycoinproject/governance/-/governance-1.2.0.tgz#bbe83c0c9324926dc5f8fab03fdc71caee6f5fd3"
   integrity sha512-HBBJOouafRqkEQSEa7b4qAd1PMS+f6yTF2KOyeeohYPclJwkIDqN5o59XMeJSnLv4XMaHFdDU+g7h75NuOVqAQ==
@@ -2166,12 +2173,12 @@
     csv-batch "^2.0.2"
     openzeppelin-solidity "^3.4.0"
 
-"@kalycoinproject/sdk@^2.0.13":
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/@kalycoinproject/sdk/-/sdk-2.0.13.tgz#c7cf5cc3e8cedb6087c12e20d07775562ebae485"
-  integrity sha512-zchNrPaJJ+AVmFuU/tZC10D71z8daG4sE4alTVseCxIPgp+l3amfoTwk0LWAnFlgkPZQoltP1fec46J+xILagQ==
+"@kalycoinproject/sdk@2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@kalycoinproject/sdk/-/sdk-2.1.12.tgz#61ee968ce6ec2a047a00c73e73dadef9f642172a"
+  integrity sha512-44DirVLztFBiYozsO/LWxoNFkI+RQ3okSOV9ODCpGkqTroLIoQrHsp/1Y5k5aGRITqrKlwbzMpDEHn22UsoqXg==
   dependencies:
-    "@kalycoinproject/exchange-contracts" "^1.0.2"
+    "@kalycoinproject/exchange-contracts" "2.0.3"
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"
     jsbi "^3.1.1"
@@ -2179,12 +2186,12 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@kalycoinproject/token-lists@^1.0.1":
+"@kalycoinproject/token-lists@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@kalycoinproject/token-lists/-/token-lists-1.0.1.tgz#f50984feefda136ae27cbe76c952fd4c1054aeb1"
   integrity sha512-CGJSL4krqcHRKRGnEMcJ0O2EUG1a32XnaFjAHXGOh4VZSWXGPCwd1rCgIxvl0+bwa6GktvL+ZQLkgzNHxlt+4g==
 
-"@kalycoinproject/web3-react-injected-connector@^1.0.3":
+"@kalycoinproject/web3-react-injected-connector@1.0.3", "@kalycoinproject/web3-react-injected-connector@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@kalycoinproject/web3-react-injected-connector/-/web3-react-injected-connector-1.0.3.tgz#03e144201ace05222f1766b672e932780add8255"
   integrity sha512-45jjyuLCgHAR8CclqxRrIXBH4hfxIj7KkJTCamarAZMlsFPyVPnvnfJQJAsgseglJYinh9Feqdz9/Vw84zFq/Q==

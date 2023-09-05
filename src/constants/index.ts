@@ -15,15 +15,15 @@ export const KALYSWAP_API_BASE_URL = `https://api.kalyswap.io`
 
 export const KALYSWAP_TOKENS_REPO_RAW_BASE_URL = `https://raw.githubusercontent.com/kalycoinproject/tokens`
 
-export const DIRECTUS_GRAPHQL_URL = `https://p7gm7mqi.directus.app/graphql`
+export const DIRECTUS_GRAPHQL_URL = ``
 
 export type LogoSize = 24 | 48
 export const getTokenLogoURL = (address: string, size: LogoSize = 24) =>
-  `${KALYSWAP_TOKENS_REPO_RAW_BASE_URL}/main/assets/${address}/logo_${size}.png`
+  `${KALYSWAP_TOKENS_REPO_RAW_BASE_URL}/main/assets/3888/${address}/logo_${size}.png`
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
-export const GOVERNANCE_ADDRESS = '0x06890EbF430ADE71e6C734Ba5d82164bfbbCCb5a'
+export const GOVERNANCE_ADDRESS = '0x567371A8D2B4456061abBaf4aE4d5756e74e9458'
 
 export const BRIDGE_MIGRATOR_ADDRESS = ''
 
@@ -40,7 +40,7 @@ type ChainTokenList = {
 }
 
 export const AIRDROP_ADDRESS: { [chainId in ChainId]?: string } = {
-  [ChainId.TESTNET]: ZERO_ADDRESS,
+  [ChainId.TESTNET]: CHAINS[ChainId.TESTNET].contracts!.airdrop!,
   [ChainId.KALYCHAIN]: CHAINS[ChainId.KALYCHAIN].contracts!.airdrop!
 }
 
@@ -102,7 +102,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
 
 // these tokens can be directly linked to (via url params) in the swap page without prompting a warning
 export const TRUSTED_TOKEN_ADDRESSES: { readonly [chainId in ChainId]: string[] } = {
-  [ChainId.TESTNET]: [],
+  [ChainId.TESTNET]: [WKLC[ChainId.TESTNET].address, KSWAP[ChainId.TESTNET].address],
   [ChainId.KALYCHAIN]: [WKLC[ChainId.KALYCHAIN].address, KSWAP[ChainId.KALYCHAIN].address]
 }
 
@@ -112,7 +112,7 @@ export const SWAP_DEFAULT_CURRENCY = {
     outputCurrency: ''
   },
   [ChainId.TESTNET]: {
-    inputCurrency: 'tKLC',
+    inputCurrency: 'KLC',
     outputCurrency: ''
   }
 }

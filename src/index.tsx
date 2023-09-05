@@ -28,11 +28,11 @@ import { fetchMinichefData } from './state/stake/hooks'
 
 try {
   Sentry.init({
-    dsn: 'https://ff9ffce9712f415f8ad4c2a80123c984@o1080468.ingest.sentry.io/6086371',
+    dsn: 'https://93211d6b3f1fec19a24d38998eee81b9@o4505686510206976.ingest.sentry.io/4505686511452160',
     integrations: [new Integrations.BrowserTracing()],
     release: `kalyswap-interface@${Package.version}`, //manual for now
     tracesSampleRate: 0.4,
-    allowUrls: ['https://app.kalyswap.io', 'https://beta-app.kalyswap.io'],
+    allowUrls: ['https://app.kalyswap.io', 'localhost'],
     enabled: process.env.NODE_ENV === 'development',
     ignoreErrors: [
       'ResizeObserver loop limit exceeded',

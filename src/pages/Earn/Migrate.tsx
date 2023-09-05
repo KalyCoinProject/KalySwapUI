@@ -66,32 +66,32 @@ export default function Migrate({
   const currencyToA = useCurrency(currencyIdToA)
   const currencyToB = useCurrency(currencyIdToB)
 
-  const [pglFromStatus, pglFrom] = usePair(currencyFromA ?? undefined, currencyFromB ?? undefined)
-  const [pglToStatus, pglTo] = usePair(currencyToA ?? undefined, currencyToB ?? undefined)
+  const [kslFromStatus, kslFrom] = usePair(currencyFromA ?? undefined, currencyFromB ?? undefined)
+  const [kslToStatus, kslTo] = usePair(currencyToA ?? undefined, currencyToB ?? undefined)
 
   const canZap =
-    (pglFrom?.involvesToken(KSWAP[chainId]) && pglTo?.involvesToken(KSWAP[chainId])) ||
-    (pglFrom?.involvesToken(WKLC[chainId]) && pglTo?.involvesToken(WKLC[chainId]))
+    (kslFrom?.involvesToken(KSWAP[chainId]) && kslTo?.involvesToken(KSWAP[chainId])) ||
+    (kslFrom?.involvesToken(WKLC[chainId]) && kslTo?.involvesToken(WKLC[chainId]))
 
-  const stakingInfoFrom = useStakingInfo(Number(versionFrom), pglFrom)?.[0]
-  const stakingInfoTo = useStakingInfo(Number(versionTo), pglTo)?.[0]
+  const stakingInfoFrom = useStakingInfo(Number(versionFrom), kslFrom)?.[0]
+  const stakingInfoTo = useStakingInfo(Number(versionTo), kslTo)?.[0]
 
-  const pglFromBalance = useTokenBalance(account ?? undefined, pglFrom?.liquidityToken)
-  const pglToBalance = useTokenBalance(account ?? undefined, pglTo?.liquidityToken)
+  const kslFromBalance = useTokenBalance(account ?? undefined, kslFrom?.liquidityToken)
+  const kslToBalance = useTokenBalance(account ?? undefined, kslTo?.liquidityToken)
 
-  const arePairsDifferent = pglFrom?.liquidityToken?.address !== pglTo?.liquidityToken?.address
+  const arePairsDifferent = kslFrom?.liquidityToken?.address !== kslTo?.liquidityToken?.address
 
   // Step 1: Detect if old LP tokens are staked
   const requiresUnstake = stakingInfoFrom?.stakedAmount?.greaterThan('0')
 
   // Step 2: Detect if old LP is currently held and cannot be migrated directly to the new staking contract
-  const requiresConvert = !requiresUnstake && arePairsDifferent && pglFromBalance?.greaterThan('0')
+  const requiresConvert = !requiresUnstake && arePairsDifferent && kslFromBalance?.greaterThan('0')
 
   // Step 3: Detect if new LP has been minted and not staked
-  const requiresStake = !requiresUnstake && !requiresConvert && !!stakingInfoTo && pglToBalance?.greaterThan('0')
+  const requiresStake = !requiresUnstake && !requiresConvert && !!stakingInfoTo && kslToBalance?.greaterThan('0')
 
   // Detect if all steps have been completed
-  const requiresNothing = !!pglFromBalance && !!pglToBalance && !requiresUnstake && !requiresConvert && !requiresStake
+  const requiresNothing = !!kslFromBalance && !!kslToBalance && !requiresUnstake && !requiresConvert && !requiresStake
 
   const [showStakingModal, setShowStakingModal] = useState(false)
   const [showMigrateModal, setShowMigrateModal] = useState(false)
@@ -136,21 +136,21 @@ export default function Migrate({
         <TYPE.mediumHeader style={{ margin: 0 }}>Liquidity Migration</TYPE.mediumHeader>
       </RowBetween>
 
-      {pglFromStatus === PairState.LOADING || pglToStatus === PairState.LOADING ? (
+      {kslFromStatus === PairState.LOADING || kslToStatus === PairState.LOADING ? (
         <Loader />
-      ) : pglFromStatus === PairState.EXISTS && pglToStatus === PairState.EXISTS ? (
+      ) : kslFromStatus === PairState.EXISTS && kslToStatus === PairState.EXISTS ? (
         <>
           <StepCard>
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 1. Unstake Kalyswap liquidity (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 1. Unstake Kalyswap liquidity (KSL)</TYPE.white>
                 </RowBetween>
                 {requiresUnstake && (
                   <>
                     <RowBetween style={{ marginBottom: '1rem' }}>
                       <TYPE.white fontSize={14}>
-                        {`You are currently staking deprecated PGL tokens. Unstake to continue the migration process`}
+                        {`You are currently staking deprecated KSL tokens. Unstake to continue the migration process`}
                       </TYPE.white>
                     </RowBetween>
                     <ButtonPrimary
@@ -159,8 +159,8 @@ export default function Migrate({
                       width={'fit-content'}
                       onClick={() => setShowUnstakingModal(true)}
                     >
-                      {`Unstake ${stakingInfoFrom?.stakedAmount?.toSignificant(4) ?? ''} ${pglFrom?.token0?.symbol}-${
-                        pglFrom?.token1?.symbol
+                      {`Unstake ${stakingInfoFrom?.stakedAmount?.toSignificant(4) ?? ''} ${kslFrom?.token0?.symbol}-${
+                        kslFrom?.token1?.symbol
                       } liquidity`}
                     </ButtonPrimary>
                   </>
@@ -173,13 +173,13 @@ export default function Migrate({
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 2. Convert Kalyswap liquidity tokens (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 2. Convert Kalyswap liquidity tokens (KSL)</TYPE.white>
                 </RowBetween>
                 {requiresConvert && (
                   <>
                     <RowBetween style={{ marginBottom: '1rem' }}>
                       <TYPE.white fontSize={14}>
-                        {`You are currently holding deprecated PGL tokens. Migrate them including the underlying assets they represent to continue the migration process`}
+                        {`You are currently holding deprecated KSL tokens. Migrate them including the underlying assets they represent to continue the migration process`}
                       </TYPE.white>
                     </RowBetween>
                     {canZap ? (
@@ -189,13 +189,13 @@ export default function Migrate({
                         width={'fit-content'}
                         onClick={() => setShowMigrateModal(true)}
                       >
-                        {`Migrate ${pglFromBalance?.toSignificant(4) ?? ''} ${pglFrom?.token0?.symbol}-${
-                          pglFrom?.token1?.symbol
-                        } to ${pglTo?.token0?.symbol}-${pglTo?.token1?.symbol}`}
+                        {`Migrate ${kslFromBalance?.toSignificant(4) ?? ''} ${kslFrom?.token0?.symbol}-${
+                          kslFrom?.token1?.symbol
+                        } to ${kslTo?.token0?.symbol}-${kslTo?.token1?.symbol}`}
                       </ButtonPrimary>
                     ) : (
                       <ErrorText severity={2}>
-                        {`Kalyswap does not support auto migration of this pair. Please withdraw the PGL and upgrade the tokens at `}
+                        {`Kalyswap does not support auto migration of this pair. Please withdraw the KSL and upgrade the tokens at `}
                         <ExternalLink href={'https://bridge.klc.network/convert'}>
                           https://bridge.klc.network/convert
                         </ExternalLink>
@@ -211,7 +211,7 @@ export default function Migrate({
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 3. Stake Kalyswap liquidity (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 3. Stake Kalyswap liquidity (KSL)</TYPE.white>
                 </RowBetween>
                 {requiresStake && (
                   <>
@@ -221,8 +221,8 @@ export default function Migrate({
                       width={'fit-content'}
                       onClick={() => setShowStakingModal(true)}
                     >
-                      {`Stake ${pglToBalance?.toSignificant(4) ?? ''} ${pglTo?.token0?.symbol}-${
-                        pglTo?.token1?.symbol
+                      {`Stake ${kslToBalance?.toSignificant(4) ?? ''} ${kslTo?.token0?.symbol}-${
+                        kslTo?.token1?.symbol
                       } liquidity to earn KSWAP`}
                     </ButtonPrimary>
                   </>
@@ -244,8 +244,8 @@ export default function Migrate({
                   </AutoColumn>
                 </CardSection>
               </SuccessCard>
-              {addTokenButton(pglTo?.token0)}
-              {addTokenButton(pglTo?.token1)}
+              {addTokenButton(kslTo?.token0)}
+              {addTokenButton(kslTo?.token1)}
             </>
           )}
         </>
@@ -275,13 +275,13 @@ export default function Migrate({
         />
       )}
 
-      {pglFrom && pglTo && (
+      {kslFrom && kslTo && (
         <BridgeMigratorModal
           isOpen={showMigrateModal}
           onDismiss={() => setShowMigrateModal(false)}
-          pairFrom={pglFrom}
-          pairTo={pglTo}
-          userLiquidityUnstaked={pglFromBalance}
+          pairFrom={kslFrom}
+          pairTo={kslTo}
+          userLiquidityUnstaked={kslFromBalance}
         />
       )}
 
@@ -290,7 +290,7 @@ export default function Migrate({
           isOpen={showStakingModal}
           onDismiss={() => setShowStakingModal(false)}
           stakingInfo={stakingInfoTo}
-          userLiquidityUnstaked={pglToBalance}
+          userLiquidityUnstaked={kslToBalance}
           version={Number(versionTo)}
         />
       )}

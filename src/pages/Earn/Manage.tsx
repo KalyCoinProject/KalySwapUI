@@ -216,7 +216,7 @@ const Manage: React.FC<ManageProps> = ({ version, stakingInfo, currencyA, curren
               </RowBetween>
               <RowBetween style={{ marginBottom: '1rem' }}>
                 <TYPE.white fontSize={14}>
-                  {t('earnPage.pglTokenRequired', { poolHandle: currencyA?.symbol + '-' + currencyB?.symbol })}
+                  {t('earnPage.kslTokenRequired', { poolHandle: currencyA?.symbol + '-' + currencyB?.symbol })}
                 </TYPE.white>
               </RowBetween>
               <ButtonPrimary
@@ -277,7 +277,7 @@ const Manage: React.FC<ManageProps> = ({ version, stakingInfo, currencyA, curren
                     {stakingInfo?.stakedAmount?.toSignificant(6) ?? '-'}
                   </TYPE.white>
                   <TYPE.white>
-                    PGL {currencyA?.symbol}-{currencyB?.symbol}
+                    KSL {currencyA?.symbol}-{currencyB?.symbol}
                   </TYPE.white>
                 </RowBetween>
               </AutoColumn>
@@ -334,7 +334,7 @@ const Manage: React.FC<ManageProps> = ({ version, stakingInfo, currencyA, curren
             <ButtonPrimary padding="8px" borderRadius="8px" width="160px" onClick={handleDepositClick}>
               {stakingInfo?.stakedAmount?.greaterThan(BIG_INT_ZERO)
                 ? t('earnPage.deposit')
-                : t('earnPage.depositStakingTokens', { symbol: 'PGL' })}
+                : t('earnPage.depositStakingTokens', { symbol: 'KSL' })}
             </ButtonPrimary>
 
             {isSuperFarm && stakingInfo?.earnedAmount?.greaterThan(BIG_INT_ZERO) && (
@@ -366,7 +366,7 @@ const Manage: React.FC<ManageProps> = ({ version, stakingInfo, currencyA, curren
         )}
         {!userLiquidityUnstaked || userLiquidityUnstaked.equalTo('0') ? null : (
           <TYPE.main>
-            {userLiquidityUnstaked.toSignificant(6)} {t('earnPage.stakingTokensAvailable', { symbol: 'PGL' })}
+            {userLiquidityUnstaked.toSignificant(6)} {t('earnPage.stakingTokensAvailable', { symbol: 'KSL' })}
           </TYPE.main>
         )}
       </PositionInfo>

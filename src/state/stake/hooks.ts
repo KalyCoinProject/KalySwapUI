@@ -1,5 +1,5 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, WKLC, Pair, Percent, CHAINS } from '@kalycoinproject/sdk'
-import { useMemo, useEffect, useState, useCallback } from 'react'
+import { useMemo, useEffect, useState, useCallback, useRef } from 'react'
 import {
   MINICHEF_ADDRESS,
   BIG_INT_ZERO,
@@ -1267,20 +1267,20 @@ export function useGetPoolDollerWorth(pair: Pair | null) {
   const currency0PriceTmp = useUSDTPrice(currency0)
   const currency0Price = CHAINS[chainId].mainnet ? currency0PriceTmp : undefined
 
-  const userPglTmp = useTokenBalance(account ?? undefined, pair?.liquidityToken)
-  const userPgl = CHAINS[chainId].mainnet ? userPglTmp : undefined
+  const userKslTmp = useTokenBalance(account ?? undefined, pair?.liquidityToken)
+  const userKsl = CHAINS[chainId].mainnet ? userKslTmp : undefined
 
   const totalPoolTokens = useTotalSupply(pair?.liquidityToken)
 
   const [token0Deposited] =
     !!pair &&
     !!totalPoolTokens &&
-    !!userPgl &&
+    !!userKsl &&
     // this condition is a short-circuit in the case where useTokenBalance updates sooner than useTotalSupply
-    JSBI.greaterThanOrEqual(totalPoolTokens.raw, userPgl.raw)
+    JSBI.greaterThanOrEqual(totalPoolTokens.raw, userKsl.raw)
       ? [
-          pair.getLiquidityValue(pair.token0, totalPoolTokens, userPgl, false),
-          pair.getLiquidityValue(pair.token1, totalPoolTokens, userPgl, false)
+          pair.getLiquidityValue(pair.token0, totalPoolTokens, userKsl, false),
+          pair.getLiquidityValue(pair.token1, totalPoolTokens, userKsl, false)
         ]
       : [undefined, undefined]
 
@@ -1292,43 +1292,62 @@ export function useGetPoolDollerWorth(pair: Pair | null) {
   //
   return useMemo(
     () => ({
-      userPgl,
+      userKsl,
       liquidityInUSD
     }),
-    [userPgl, liquidityInUSD]
+    [userKsl, liquidityInUSD]
   )
 }
 
-export function useMinichefPendingRewards(miniChefStaking: DoubleSideStakingInfo | null) {
+export function useMinichefPendingRewards(miniChefStaking: StakingInfo | null) {
   const { account } = useActiveWeb3React()
 
+  const rewardData = useRef(
+    {} as {
+      rewardTokensAmount: TokenAmount[]
+      rewardTokensMultiplier: any
+    }
+  )
+
   const rewardAddress = miniChefStaking?.rewardsAddress
-
   const rewardContract = useRewardViaMultiplierContract(rewardAddress !== ZERO_ADDRESS ? rewardAddress : undefined)
+  const getRewardTokensRes = useSingleCallResult(rewardContract, 'getRewardTokens', undefined)
+  const getRewardMultipliersRes = useSingleCallResult(rewardContract, 'getRewardMultipliers', undefined)
+  const { earnedAmount } = useGetEarnedAmount(miniChefStaking?.pid as string)
 
-  const earnedAmount = miniChefStaking?.earnedAmount
-    ? JSBI.BigInt(miniChefStaking?.earnedAmount?.raw).toString()
-    : JSBI.BigInt(0).toString()
+  const rewardTokensAddress = getRewardTokensRes?.result?.[0]
+  const rewardTokensMultiplier = getRewardMultipliersRes?.result?.[0]
+  const earnedAmountStr = earnedAmount ? JSBI.BigInt(earnedAmount?.raw).toString() : JSBI.BigInt(0).toString()
 
-  const rewardTokenAmounts = useSingleContractMultipleData(
+  const pendingTokensRes = useSingleContractMultipleData(
     rewardContract,
     'pendingTokens',
-    account ? [[0, account as string, earnedAmount]] : []
+    account ? [[0, account as string, earnedAmountStr]] : []
   )
-  const rewardTokens = useTokens(miniChefStaking?.rewardTokensAddress)
-  const rewardAmounts = rewardTokenAmounts?.[0]?.result?.amounts || [] // eslint-disable-line react-hooks/exhaustive-deps
+
+  const isLoading = pendingTokensRes?.[0]?.loading
+  const rewardTokens = useTokens(rewardTokensAddress)
+
+  const rewardAmounts = pendingTokensRes?.[0]?.result?.amounts || [] // eslint-disable-line react-hooks/exhaustive-deps
 
   const rewardTokensAmount = useMemo(() => {
     if (!rewardTokens) return []
+
     return rewardTokens.map((rewardToken, index) => new TokenAmount(rewardToken as Token, rewardAmounts[index] || 0))
   }, [rewardAmounts, rewardTokens])
 
-  return useMemo(
-    () => ({
-      rewardTokensAmount
-    }),
-    [rewardTokensAmount]
-  )
+  useEffect(() => {
+    if (!isLoading) {
+      rewardData.current = {
+        rewardTokensAmount,
+        rewardTokensMultiplier
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rewardTokensAmount, rewardTokensMultiplier, isLoading])
+
+  return rewardData.current
 }
 
 export function useDerivedStakingProcess(stakingInfo: SingleSideStakingInfo) {

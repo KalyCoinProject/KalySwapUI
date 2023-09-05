@@ -3,7 +3,7 @@ import { getAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import IKalyswapRouter from '@kalycoinproject/exchange-contracts/artifacts/contracts/kalyswap-periphery/interfaces/IKalyswapRouter.sol/IKalyswapRouter.json'
+import IKalyswapRouter from '../artifacts/kalyswap-periphery/IKalyswapRouter.json'
 import { ROUTER_ADDRESS } from '../constants'
 import {
   ChainId,
