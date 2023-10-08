@@ -13,7 +13,7 @@ export function useTotalSupply(token?: Token): TokenAmount | undefined {
 
   // Special case to handle KSWAP's proxy burnt total supply
   if (token?.equals(KSWAP[ChainId.KALYCHAIN])) {
-    return new TokenAmount(token, '230000000000000000000000000')
+    return new TokenAmount(token, '538000000000000000000000000')
   }
 
   return token && totalSupply ? new TokenAmount(token, totalSupply.toString()) : undefined
